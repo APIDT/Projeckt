@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Градієнтний Фон з GIF</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url('D:\\Users10\\w\\Desktop\\SS\\VS.gif') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Star Jedi', sans-serif; /* Використовуємо шрифт Star Jedi */
+    }
+
+    .panel {
+        background-color: rgba(0, 0, 0, 0.637);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.637);
+        opacity: 1;
+        transition: opacity 1s ease;
+    }
+
+    .container {
+        max-width: 600px;
+        text-align: center;
+        color: yellow; /* Змінюємо колір тексту на жовтий */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+    }
+
+    input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #021b35;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        opacity: 0.5;
+        transition: background-color 0.5s ease;
+    }
+
+    button:hover {
+        background-color: #002144;
+    }
+
+    button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    h1 {
+        text-shadow: 0 0 3px black;
+    }
+</style>
+</head>
+<body>
+<div class="panel" id="panel">
+    <div class="container">
+        <h1>скорочення URL</h1>
+        <input type="text" id="longUrl" placeholder="Введіть довгий URL" oninput="toggleButton()">
+        <button id="button" onclick="скоротитиUrl()" disabled>Скоротити</button>
+        <p id="скороченийUrl"></p>
+    </div>
+</div>
+
+<script>
+    var dartveider = 'https://www.dartveider.com/'; // фіксований скорочений URL
+
+    function toggleButton() {
+        var input = document.getElementById('longUrl');
+        var button = document.getElementById('button');
+        button.disabled = input.value.trim() === "";
+    }
+
+    function скоротитиUrl() {
+        var скороченийUrl = dartveider;
+        var linkElement = document.createElement('a');
+        linkElement.href = скороченийUrl;
+        linkElement.innerText = "Скорочений URL: " + скороченийUrl;
+        var скороченийUrlElement = document.getElementById('скороченийUrl');
+        скороченийUrlElement.innerHTML = '';
+        скороченийUrlElement.appendChild(linkElement);
+    }
+</script>
+</body>
+</html>
